@@ -243,6 +243,14 @@ def run_streamlit_app():
     st.markdown("---")
     st.caption("Volume dihitung menggunakan rumus Frustum (Limas Terpancung) untuk akurasi galian.")
 
-
+# --- ENTRY POINT ---
+if __name__ == "__main__":
+    if st.runtime.exists():
+        run_streamlit_app()
+    else:
+        sys.argv = [
+            "streamlit", "run", resolve_path(__file__),
+            "--server.headless=false",
+            "--global.developmentMode=false",
         ]
 sys.exit(stcli.main())
